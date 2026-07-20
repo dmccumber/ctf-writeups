@@ -1,0 +1,12 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Never commit real credentials, SSH keys, or private wordlists
+*.pem
+*.key
+credentials.txt
