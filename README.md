@@ -26,6 +26,7 @@ I'm working toward a SOC Analyst / IT Security role with a blue-team focus, curr
 |---|---|---|
 | 0 → 1 | SSH basics | [level00-01.md](bandit/level00-01.md) |
 | 1 → 2 | Reading a File Named "-" | [level01-02.md](bandit/level01-02.md) |
+| 2 → 3 | Filename containing spaces  | [level02-03.md](bandit/level02-03.md) |
 | ... | ... | *(add new rows as you go)* |
 
 ## picoCTF Write-Ups

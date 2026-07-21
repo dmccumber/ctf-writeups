@@ -16,10 +16,9 @@ ls
 ```
 
 ## Approach
-Once I gained access to the machine, I ran a quick LS command to list the contents of the current directory. I found the file that was in question. I attempted to run a cat command on the file and didn't have much success due to the terminal not interpretting it as a file name. Therefore, I had to change my approach and use the relative path of the file inside of the directory.
+Once I gained access to the machine, I ran a quick LS command to list the contents of the current directory. I found the file that was in question. I attempted to run a cat command on the file and didn't have much success due to the terminal not interpretting it as STDIN instead of a file name. Therefore, I had to change my approach and use the relative path of the file inside of the directory.
 
 ```bash
-cat - 
 cat ./-
 ```
 
@@ -29,7 +28,9 @@ The cat ./- command provided the password for the next level inside of the "-" f
 **Flag:** `REDACTED`
 
 ## Key Takeaway / Blue-Team Relevance
-Trivial here, but it's the foundation for everything else: comfortable SSH usage and file navigation are prerequisites for log review, live response on remote hosts, and jump-box work in a SOC.
+Files that are named using a hyphen "-" are relevant to blue teamers because they are used by attackers to potentially confuse the command line due to option injection, or can be used for exploitation purposes.
+
+Therefore, it is important to do what we did in this lab by either using the relative path or using the double dash parameter when running commands when dealing with suspicious files.
 
 ## Portfolio Angle
-Establishes baseline Linux/SSH fluency that later Bandit levels build on (file permissions, SUID binaries, cron jobs, and privilege escalation).
+We should also keep this type of thing in mind when writing automation scripts, and should always validate filenames and their associated inputs. 
