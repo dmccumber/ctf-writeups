@@ -1,33 +1,35 @@
-# [Platform] – [Level/Challenge Name]
+# Bandit – Level 1 → 2
 
-**Category:** e.g. Privilege Escalation / Forensics / Web Exploitation
-**Difficulty:** Easy / Medium / Hard
+**Category:** Linux Fundamentals
+**Difficulty:** Easy
 **Tools used:** e.g. `ssh`, `find`, `strings`, `netcat`
 
 ## Objective
-One or two sentences: what does this level/challenge ask you to do?
+The objective of this room is to find the password of the next level that is stored in a file called "-"
 
 ## Recon
-What did you observe first? (file listing, service banners, hints in challenge description, permissions, etc.)
+Connected using SSH with the credentials that I found in the previous level, and then listed the home directory contents to find the required file. 
 
 ```bash
-# commands used during recon
+ssh bandit1@bandit.labs.overthewire.org -p 2220
+ls 
 ```
 
 ## Approach
-Walk through your reasoning step by step — this is the part recruiters actually read. Explain *why* you tried something, not just what you typed.
+Once I gained access to the machine, I ran a quick LS command to list the contents of the current directory. I found the file that was in question. I attempted to run a cat command on the file and didn't have much success due to the terminal not interpretting it as a file name. Therefore, I had to change my approach and use the relative path of the file inside of the directory.
 
 ```bash
-# key commands, redact any flag output
+cat - 
+cat ./-
 ```
 
 ## Solution Summary
-Brief recap of the technique that worked (e.g. "SUID binary allowed reading a file owned by the next-level user").
+The cat ./- command provided the password for the next level inside of the "-" file in plaintext.
 
 **Flag:** `REDACTED`
 
 ## Key Takeaway / Blue-Team Relevance
-How does this technique show up in real environments? What would you look for as a defender to detect or prevent this? (e.g. "This SUID misconfiguration is exactly what auditing tools like `linpeas` or a scheduled `find / -perm -4000` check would catch.")
+Trivial here, but it's the foundation for everything else: comfortable SSH usage and file navigation are prerequisites for log review, live response on remote hosts, and jump-box work in a SOC.
 
 ## Portfolio Angle
-One line on how this connects to a broader skill (e.g. "Same privilege-escalation logic applies to Linux persistence checks during incident response.")
+Establishes baseline Linux/SSH fluency that later Bandit levels build on (file permissions, SUID binaries, cron jobs, and privilege escalation).
